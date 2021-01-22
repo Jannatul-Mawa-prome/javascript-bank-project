@@ -1,0 +1,46 @@
+body{
+    font-family: tahoma;
+}
+#bank{
+    margin-top: 80px;
+}
+#transaction-Area{
+    margin-top: 80px; 
+}
+.container{
+    width: 60%;
+    margin: auto;
+}
+.login{
+    width:80%;
+    margin: auto;
+    border: 0px solid gray;
+    box-shadow: 5px 5px 10px lightgrey;
+    padding:20px 10px;
+}
+.btn{
+    padding: 5px 20px;
+}
+.deposit{
+    background-color: blue;
+    color:white;
+}
+.Withdraw{
+    background-color:rgb(207, 79, 122);
+    color:white;
+}
+.balance{
+    background-color: orange;
+    color:white;
+}
+
+
+const depositText = document.getElementById("depositText").innerText;
+const numDepositText =parseFloat(depositText);
+const totleDeposit = numDepositAmount + numDepositText;
+document.getElementById("depositText").innerText=totleDeposit; 
+
+const balanceText = document.getElementById("balanceText").innerText;
+const numbalanceText =parseFloat(balanceText);
+const totlebalance = numDepositAmount + numbalanceText;
+document.getElementById("balanceText").innerText= totlebalance; 

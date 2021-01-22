@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bank website</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="bank">
+        <h1  class="text-center">Welcome to our bank</h1>
+        <div class="login">
+         <h2>Login</h2>
+         <input type="email" class="form-control" placeholder="Enter your email"><br />
+         <input type="password" class="form-control" placeholder="Enter your password"><br />
+         <input type="submit" id="login" class="btn btn-success" value="Enter" >   
+        </div>
+    </div>
+
+    <div id="transaction-Area">
+        <div class="container">
+            <h1 class="text-center mb-4">Transaction Area</h1>
+        <div class="card-deck mb-5">
+            <div class="card deposit">
+              <div class="card-body">
+                <h5 class="card-title">Deposit</h5>
+                <h2 class="card-text">$ <span id="depositText"> 10 </span></h2>
+              </div>
+            </div>
+            <div class="card Withdraw">
+              <div class="card-body">
+                <h5 class="card-title">withdraw </h5>
+                <h2 class="card-text">$<span id="withdrawText"> 00 </span></h2>
+              </div>
+            </div>
+            <div class="card balance">
+              <div class="card-body">
+                <h5 class="card-title">Balance</h5>
+                <h2 class="card-text">$ <span id="balanceText"> 1200 </span></h2>
+              </div>
+            </div>
+          </div>
+          <div class="card-deck">
+            <div class="card deposit-area">
+              <div class="card-body">
+                <h5 class="card-title">Deposit</h5>
+                <input type="text" id="depositAmount" class="form-control" placeholder="$ amount you want deposit"><br>
+                <input type="submit" id="deposit" class="btn btn-success" value="Deposit" > 
+              </div>
+            </div>
+            <div class="card Withdraw-area">
+              <div class="card-body">
+                <h5 class="card-title">Withdraw</h5>
+                <input type="text" id="withdrawAmount"  class="form-control"  placeholder="$ amount you want deposit"><br>
+                <input type="submit" id="withdraw" class="btn btn-success" value="Withdraw" placeholder="$ amount you want deposit"> 
+              </div>
+            </div>
+        </div> 
+        </div>
+    </div>
+
+
+    <script>
+        const transaction =document.getElementById("transaction-Area")
+        transaction.style.display="none"
+        const login = document.getElementById("login");
+        login.addEventListener("click",function(){
+            const loginArea =document.getElementById("bank");
+            loginArea.style.display="none";
+            transaction.style.display="block"
+        })
+
+
+        const deposit = document.getElementById("deposit");
+        deposit.addEventListener("click",function(){
+            const  depositAmount = document.getElementById("depositAmount").value;
+            const numDepositAmount =parseFloat(depositAmount);
+            document.getElementById("depositAmount").value="";
+
+         updateAmount("depositText",numDepositAmount);
+         updateAmount("balanceText",numDepositAmount);
+
+        })
+        function updateAmount(id,numDepositAmount){
+            const depositText = document.getElementById(id).innerText;
+            const numDepositText =parseFloat(depositText);
+            const totleDeposit = numDepositAmount + numDepositText;
+            document.getElementById(id).innerText = totleDeposit; 
+        }
+
+
+        const withdraw = document.getElementById("withdraw");
+        withdraw.addEventListener("click",function(){
+            const withdrawAmount = document.getElementById("withdrawAmount").value;
+            const numWithdrawAmount = parseFloat(withdrawAmount);
+            document.getElementById("withdrawAmount").value="";
+
+            
+         updateWithdraw("withdrawText",numWithdrawAmount);
+         updateWithdraw("balanceText", -1 * numWithdrawAmount);
+        })
+        function updateWithdraw(id,numWithdrawAmount){
+            const withdrawText = document.getElementById(id).innerText;
+            const numWithdrawText =parseFloat(withdrawText);
+            const totleWithdraw = numWithdrawAmount + numWithdrawText;
+            document.getElementById(id).innerText= totleWithdraw; 
+        }
+        
+    </script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
